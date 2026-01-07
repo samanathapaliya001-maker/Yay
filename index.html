@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Soniya 💖</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 1; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ff5f7e);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  max-width: 700px;
+  padding: 20px;
+}
+
+#greeting {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#startBtn {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2rem;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: none;
+  background: #ffd1dc;
+  color: #ff3366;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+#startBtn:hover {
+  transform: scale(1.1);
+}
+
+/* Envelope */
+#envelope {
+  display: none;
+  margin: 40px auto;
+  width: 260px;
+  height: 170px;
+  background: #ffc0cb;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+#envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 90px solid #ff6f91;
+}
+
+#heart {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 30px;
+  height: 30px;
+  background: red;
+}
+
+#heart::before,
+#heart::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
+
+#heart::before { top: -15px; left: 0; }
+#heart::after { left: 15px; top: 0; }
+
+/* Poem */
+#poem {
+  display: none;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+
+/* Bears */
+#bears {
+  display: none;
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+/* Question */
+#question {
+  display: none;
+  margin-top: 25px;
+}
+
+#question h2 {
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #fff;
+  color: #ff4d6d;
+}
+
+/* Hearts falling */
+.heart-fall {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div id="greeting">
+    Hi Soniya, I just wanted to say something to you…
+  </div>
+
+  <button id="startBtn">Click here 💖</button>
+
+  <div id="envelope">
+    <div id="heart"></div>
+  </div>
+
+  <div id="poem"></div>
+
+  <div id="bears">🧸💞🧸</div>
+
+  <div id="question">
+    <h2>Will you please give me a chance and be my girlfriend?</h2>
+    <button class="btn" id="yesBtn">Yes 💖</button>
+    <button class="btn" id="noBtn">No 🙈</button>
+  </div>
+
+</div>
+
+<script>
+const startBtn = document.getElementById("startBtn");
+const envelope = document.getElementById("envelope");
+const poemDiv = document.getElementById("poem");
+const bears = document.getElementById("bears");
+const question = document.getElementById("question");
+const noBtn = document.getElementById("noBtn");
+
+const poemText = `My baby, I’ve been carrying this in my heart for a long time, and I can’t keep it to myself anymore. Being around you, even just thinking about you, makes everything feel brighter and simpler, like the world finally makes sense in the way it’s supposed to. You’re not only beautiful, genuinely gorgeous in every way, but there’s something about the way you carry yourself, the way you laugh, the way you make people feel understood and valued, that I can’t stop thinking about. I like you more than anything, more than I’ve ever liked anyone, and every time I imagine being with you, it feels like home. I want to be there for you in every way I can, to support you, make you happy, and take care of you, not just in moments, but in all the ordinary days too, because life with you feels like it could be extraordinary. I don’t want to just admire you from afar anymore; I want to share my life with you, to make this official, to see us grow together, laugh together, and face everything together. Being with you feels right in a way nothing else ever has, and I hope you feel something similar too, because I can’t imagine not trying to make this real with you.`;
+
+startBtn.onclick = () => {
+  startBtn.style.display = "none";
+  envelope.style.display = "block";
+};
+
+envelope.onclick = () => {
+  envelope.style.display = "none";
+  poemDiv.style.display = "block";
+  typeText(poemText);
+  hearts();
+};
+
+function typeText(text) {
+  let i = 0;
+  const interval = setInterval(() => {
+    poemDiv.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) {
+      clearInterval(interval);
+      bears.style.display = "block";
+      question.style.display = "block";
+    }
+  }, 20);
+}
+
+function hearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart-fall";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }, 300);
+}
+
+noBtn.onmouseover = () => {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * 80 + "vw";
+  noBtn.style.top = Math.random() * 80 + "vh";
+};
+</script>
+</body>
+</html>
